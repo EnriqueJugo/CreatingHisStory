@@ -1,0 +1,41 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Enrique\\AppData\\Roaming/RenPy/RewritingHIStory-1691203303/sync\\_reload-1-LT1.save'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\loadsave.py", line 807, in load
+    log_data, signature = location.load(filename)
+  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\savelocation.py", line 520, in load
+    return l.load(slotname) # type: ignore
+  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\savelocation.py", line 284, in load
+    with zipfile.ZipFile(filename, "r") as zf:
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python3.9/zipfile.py", line 1239, in __init__
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Enrique\\AppData\\Roaming/RenPy/RewritingHIStory-1691203303/sync\\_reload-1-LT1.save'
+
+Windows-10-10.0.22621 AMD64
+Ren'Py 8.1.1.23060707
+Rewriting HIStory 1.0
+Sun Aug  6 13:15:28 2023
