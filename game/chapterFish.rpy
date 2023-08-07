@@ -103,8 +103,10 @@ label chapterFish:
         menu:
             nar "Would you rather let this fish swim on forever until it dies? Or would you rather take a risk, and take the first step in all of history?"
             "Take the risk":
+                play audio "choiceEffect.ogg" volume 0.25
                 jump goodFish
             "Let's stay in a safe place":
+                play audio "choiceEffect.ogg" volume 0.25
                 jump badFish
 
     label goodFish:
@@ -113,10 +115,14 @@ label chapterFish:
             zoom 3.0
     
         pause(1)
-        show bg white onlayer overlay with dissolve
-        scene bg white onlayer overlay
-
+        jump happyFish
+    
+    label happyFish:
+        scene bg white with dissolve
+        hide fishSurface with dissolve
         nar "The fish took a leap of faith. It took a risk. It took the first step in all of history."
+        scene bg black with dissolve
+        stop music fadeout(1.0)
         jump chapterApe
     
     label badFish:
@@ -128,8 +134,9 @@ label chapterFish:
         nar "The course of history is now changed. The fish will swim on forever, until it dies. It will never know what is on the other side."
         nar "There is no such thing as land animals, and we all become fish."
         show splashscreen3 with dissolve
-        nar "%(name)s is suppose to be sad fish not but no time"
-        nar "Let's go back..."
+        "Sometimes in life, we have to take risks."
+        "The future is never to come."
+        "Let's try again..."
         jump chapterFish
 
 

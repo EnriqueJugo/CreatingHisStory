@@ -13,7 +13,6 @@ default name = "Amos"
 
 label prologue:
     play music "prologue_Music.mp3"
-    scene bg black
     
     nar "..."
 

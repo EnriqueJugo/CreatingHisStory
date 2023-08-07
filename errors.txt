@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/prologue.rpy", line 36: expected end of line
-    stop music with fadeout(1.0)
-               ^
+File "game/chapterEnding.rpy", line 15: end of line expected.
+    show splashscreen3 with dissolve at right
+                                     ^
 
 Ren'Py Version: Ren'Py 8.1.1.23060707
-Sun Aug  6 13:12:33 2023
+Sun Aug  6 15:43:26 2023
