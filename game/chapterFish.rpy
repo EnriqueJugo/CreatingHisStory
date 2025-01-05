@@ -1,14 +1,12 @@
-﻿# The script of the game goes in this file.
+﻿# This file contains the script for the fish chapter.
+# The fish chapter is the first chapter of the game. It's about the origin of life and the first step of evolution.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+define config.default_textshader = "typewriter"
 
-
-
-# The game starts here.
-
+# ====================== initialize character animations ====================== # 
+# lachlandfish moves 
 image fishIdle:
-    "lachlanfish.png"
+    "lachlan fish.png"
     parallel:
         easeout 1.5 xoffset 10
         easein 1.5 xoffset -10
@@ -22,8 +20,9 @@ image fishIdle:
         easein 2 rotate -2.0
         repeat
 
+# lachlan fish positions them self to jump out of the water animation
 image fishSurface:
-    "lachlanfish.png"
+    "lachlan fish.png"
     parallel:
         linear 0.01 xoffset 5
         linear 0.01 xoffset -5
@@ -39,7 +38,16 @@ image fishSurface:
         linear 0.01 rotate -0.1
         repeat
     parallel:
-        linear 2 rotate -20.0
+        linear 2 rotate -40.0
+
+# lachlan fish jumps out of the water animation 
+image fishJump:
+    "lachlan fish.png"
+    parallel:
+        linear 0.01 rotate -40.0
+        easein 1.5 yoffset -1000
+
+# ====================== scene ====================== #
 
 label chapterFish:
     play music "waterAudio.ogg" volume 0.5
@@ -48,26 +56,31 @@ label chapterFish:
 
     nar "We all came from the sea."
     
-    show bg water with dissolve
-    pause(1)
+    show bg underwater with dissolve
+    pause(0.5)
 
     show fishIdle at truecenter with moveinleft:
         zoom 3.0
 
-    pause(1)
+    pause(0.5)
 
     char "It would’ve been nice if we were all like this fish. Not a care in the world; aimlessly swimming the sea. Such a simple creature."
 
-    nar "But you are no simple creature, and so is this fish. This fish is swimming with purpose. And like you, it is very concerned."
+    nar "You are no simple creature—and neither is this fish. It swims with purpose. And, like you, it is deeply concerned."
 
     # Minor choice
     menu:
-        nar "It is concerned for its life; its health; its future. Being worried shows that you care about something, and that something is special to you."
-        "What a sad life it is then. It might as well just not exist if its only purpose is to live.":
-            jump fishPurpose
-        
-        "Maybe I can learn from this fish.":
+        nar "It is concerned for its life, its health, its future. Worrying means it cares—about something, someone. That something is special."
+
+        # go to fishLearn
+        "{font=VCRMono.ttf}Be curious{/font}":
+            char "Maybe theres something more to this fish."
             jump fishLearn
+        
+        # go to fishPurpose
+        "{font=VCRMono.ttf}Be pesimistic{/font}":
+            char "But what a sad life it is, then. If its sole purpose is merely to survive... it might as well not exist."
+            jump fishPurpose
 
     # Branch
     label fishPurpose:
@@ -89,9 +102,12 @@ label chapterFish:
     nar "It is a risk worth taking is it not?"
 
     menu:
-        "No.":
+        "{font=VCRMono.ttf}Agree{/font}":
+            char "I guess it is. It’s a risk worth taking."
             pause(1)
-        "Hmm... I guess so.":
+
+        "{font=VCRMono.ttf}Disagree{/font}":
+            char "I don’t know. I don’t think it’s worth it."
             pause(1)
 
     nar "Hmm..."
@@ -101,11 +117,13 @@ label chapterFish:
     # Major choie
     label majorFishChoice:
         menu:
-            nar "Would you rather let this fish swim on forever until it dies? Or would you rather take a risk, and take the first step in all of history?"
-            "Take the risk":
+            nar "Will you let the fish swim endlessly, drifting until its end? Or will you take the risk to take the first step in all of history?"
+            "{font=VCRMono.ttf}Risk it all{/font}":
+                char "I’ll take the risk."
                 play audio "choiceEffect.ogg" volume 0.25
                 jump goodFish
-            "Let's stay in a safe place":
+            "{font=VCRMono.ttf}Stay in the water{/font}":
+                char "I think I'm happy staying here."
                 play audio "choiceEffect.ogg" volume 0.25
                 jump badFish
 
@@ -115,15 +133,19 @@ label chapterFish:
             zoom 3.0
     
         pause(1)
-        jump happyFish
-    
-    label happyFish:
-        scene bg white with dissolve
-        hide fishSurface with dissolve
-        nar "The fish took a leap of faith. It took a risk. It took the first step in all of history."
-        scene bg black with dissolve
-        stop music fadeout(1.0)
-        jump chapterApe
+        show bg white onlayer overlay with dissolve
+        scene bg white onlayer overlay
+        hide fishSurface
+
+        show fishJump at truecenter:
+            zoom 3.0
+        nar "The fish took a leap of faith."
+        nar "It took a risk." 
+        nar "{shader=jitter}It took the first step in all of history{/shader}."
+        nar "Let's go forward together."
+        show bg white onlayer overlay with dissolve
+        scene bg white onlayer overlay
+        jump chapterMonke
     
     label badFish:
         scene bg black with dissolve
@@ -131,12 +153,11 @@ label chapterFish:
     
     label sadFish:
         scene bg black
-        nar "The course of history is now changed. The fish will swim on forever, until it dies. It will never know what is on the other side."
-        nar "There is no such thing as land animals, and we all become fish."
+        nar "History has shifted. The fish swims on, blind to the other side of the water."
+        nar "Land animals? A myth. We are all fish now."
         show splashscreen3 with dissolve
-        "Sometimes in life, we have to take risks."
-        "The future is never to come."
-        "Let's try again..."
+        nar "%(name)s, there’s no time to grieve your fins"
+        nar "Let's go back..."
         jump chapterFish
 
 

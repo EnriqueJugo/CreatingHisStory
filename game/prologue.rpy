@@ -1,39 +1,36 @@
-﻿# The script of the game goes in this file.
+﻿# This file contains the script for the very start of the visual novel game.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-define char = Character("You")
-define nar = Character("Narrator", color = "#797777")
-
-default name = "Amos"
-
-
-# The game starts here.
+define config.default_textshader = "typewriter"
 
 label prologue:
     play music "prologue_Music.mp3"
+    scene bg black with dissolve
     
     nar "..."
 
-    nar "Hello there. What is your name, child?"
+    nar "Hello there. What is your name?"
 
     $ name = renpy.input("Enter your name: ", "Amos")
     $ name = name.strip()
-
     
+    show bg prologue dark with dissolve
     nar "What is wrong %(name)s? You seem concerned."
-    show splashscreen3 with dissolve
+    
     pause(2)
 
-    char "I don’t know. I am in a never ending loop of thoughts. Nothing is going my way. I wish that things went differently. I wish I could just rewrite history."
-
+    show bg prologue light with vpunch
+    char "I don’t know. I'm in a never-ending loop of thoughts."
+    show bg prologue light with vpunch
+    char "Nothing is going my way."
+    show bg prologue light with vpunch
+    char "I wish I could just {shader=jitter}REWRITE HISTORY{/shader}."
+ 
     nar "Would you like to see if history was rewritten?"
 
     menu:
-        "Yes":
+        "{font=VCRMono.ttf}Yes{/font}":
+            play audio "choiceEffect.ogg" volume 0.25
             stop music fadeout(1.0)
             jump chapterFish
-    # This ends the game.
 
     return

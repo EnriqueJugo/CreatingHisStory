@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/chapterApe.rpy", line 137, in script
-    jump chapterNewton
-ScriptError: could not find label 'chapterNewton'.
+  File "game/chapterFish.rpy", line 148, in script
+    jump chapterMonke
+ScriptError: could not find label 'chapterMonke'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/chapterApe.rpy", line 137, in script
-    jump chapterNewton
-  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\ast.py", line 1992, in execute
+  File "game/chapterFish.rpy", line 148, in script
+    jump chapterMonke
+  File "C:\Users\peter\Downloads\renpy-8.3.4-sdk\renpy\ast.py", line 1705, in execute
     rv = renpy.game.script.lookup(target)
-  File "C:\Users\Enrique\Downloads\renpy-8.1.1-sdk\renpy\script.py", line 1013, in lookup
+  File "C:\Users\peter\Downloads\renpy-8.3.4-sdk\renpy\script.py", line 1103, in lookup
     raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'chapterNewton'.
+ScriptError: could not find label 'chapterMonke'.
 
-Windows-10-10.0.22621 AMD64
-Ren'Py 8.1.1.23060707
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.3.4.24120703
 Rewriting HIStory 1.0
-Sun Aug  6 16:04:22 2023
+Mon Jan  6 12:24:10 2025

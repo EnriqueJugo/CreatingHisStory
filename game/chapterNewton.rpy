@@ -1,11 +1,15 @@
-define y = Character("You")
-define n = Character("Narrator", color = "#797777")
+# This file contains the script for the Newton chapter.
+
+define config.default_textshader = "typewriter"
+
+# ====================== initialize new characters ====================== #
+
 define Newton = Character("Isaac Newton", color = "#797777")
 
+# ====================== initialize character animations ====================== # 
 # [Black scene]
-
 image newton:
-    "issaclachy.png"
+    "lachlan isaac.png"
     zoom 2
     animation
     parallel:
@@ -20,7 +24,7 @@ image newton:
         repeat
 
 image newtonChill:
-    "issaclachy.png"
+    "lachlan isaac.png"
     zoom 1.5
     animation
     parallel:
@@ -34,103 +38,117 @@ image newtonChill:
         easeout 0.5 yoffset -2
         repeat
 
+image applefalls:
+    "apple.png"
+    zoom 1.5
+    linear 0 yoffset -900
+
+    parallel:
+        linear 1 yoffset 600
+    parallel:
+        linear 0.5 rotate 360
+        repeat
+
+# ====================== scene ====================== #
+
 label chapterNewton:
     play music "issac_Piano.ogg"
-    n "As a result of standing for millions of years, monkeys have now transformed into slightly more intelligent beings called humans."
+    nar "Through countless ages of standing tall, the monkeys have shed their simplicity, evolving into what we now call humans."
 
     scene bg sunnyfield with dissolve:
         zoom 2.5
-    y "Wait… Is… Is that…. Isaac Newton?!"
+    char "Wait…"
+    char "{shader=jitter}Is… Is that…{/shader}"
+    char "{size=*2}{b}Isaac Newton?!{/b}{/size}"
 
     show newton at center with dissolve
-    n "Why yes it is"
+    nar "Why yes it is"
     menu:
-        "Doesn’t he look a little off??":
+        "{font=VCRMono.ttf}Act excited{/font}":
+            char "Holy crap! That’s Isaac Newton!"
             pause(1)
-        "He kind of looks like the monkey from before.":
+        "{font=VCRMono.ttf}Comment on Newton's appearance{/font}":
+            char "Doesn’t he look a little off??"
+            char "He kind of looks like the monkey from before."
+            nar "No, no, he looks perfectly normal"
+            char "Are you sure??"
+            nar "Yes, trust me"
             pause(1)
 
-    n "No, no, he looks perfectly normal"
+    char "Alright………. Anyway, Why are you showing me him?" 
 
-    y "Are you sure??"
+    nar "Why? Because he’s among the greatest minds to ever exist—the one who revealed the secrets of {b}gravity{/b} itself."
 
-    n "Yes, trust me"
+    char "Everyone knows that. I wish I could have done something like that…"
 
-    y "Alright………. Anyway, Why are you showing me him?" 
+    nar "You can"
 
-    n "Well, he is one of the greatest scientists of all time, he is the one who discovered gravity"
+    char "I can’t, I’m just not good enough"
 
-    y "Everyone knows that. I wish I could have done something like that…"
-
-    n "You can"
-
-    y "I can’t, I’m just not good enough"
-
-    n "Well, have a look at this"
+    nar "Perhaps oberserving Newton will help you understand"
 
     Newton "…"
 
     Newton "Hmmmm….."
 
-    Newton "I have a hypothesis of why things fall to the ground. But I don’t know if I am right. What if I am completely wrong? I’d be treated like an idiot."
+    Newton "I have a hypothesis as to why objects fall to the ground. Yet, I cannot be certain of its truth. What if I am entirely mistaken? I should be ridiculed as a fool."
 
-    y "Obviously he isn’t wrong, in the present we know that he was right about gravity"
+    char "Obviously he isn’t wrong, in the present we know that he was right"
 
-    n "Well, we only know that now, but it was impossible for him to know at the time"
+    nar "Ah, but such knowledge was beyond his grasp in those days—impossible for him to foresee."
 
-    y "I guess so…"
+    char "I guess so…"
 
     menu:
-        Newton "I should find somewhere quiet to work more on my hypothesis? Maybe I can figure something out that proves my hypothesis. I don’t know. Maybe  I should just go home, I am just going crazy."
-        "Go home":
-            "I'm probably wrong, I’ll just go home…"
+        Newton "Perhaps I ought to seek a quiet place to refine my hypothesis. Mayhap I shall uncover something to prove it true. Or perchance I am simply chasing madness… Perhaps I should return home."
+        "{font=VCRMono.ttf}Find somewhere to study{/font}":
+            Newton "No, I am certain there is more to this. I must press on."
+
+        "{font=VCRMono.ttf}Go home{/font}":
+            Newton "I'm probably wrong, I’ll just go home…"
             scene bg black with dissolve
-            show splashscreen3 with dissolve
-            "Imperfect action is better than perfect inaction"
-            "For others to believe in you, you have to believe in yourself first"
-            "Future is to never come."
-            "Let's do it again."
+            show bg background light with dissolve
+            nar "Even flawed action surpasses flawless inaction."
+            nar "Belief in oneself is the first step to earning the belief of others."
+            nar "The future remains forever out of reach."
+            nar "Shall we try again?"
             scene bg black with dissolve
             jump chapterNewton
 
-        "Find somewhere to study":
-            Newton "No I believe there is something more to this, I want to keep going"
+    char "Of course he should look into it more, he’s on the way to making a huge breakthrough"
 
-    y "Of course he should look into it more, he’s on the way to making a huge breakthrough"
+    nar  "Ah, that’s the crux of it. He may not know it now, but he is on the verge of something truly extraordinary."
 
-    n "That's the point. He doesn’t realise it yet, but he is about to do something incredible"
+    nar "Others may not see it now, but if you believe in yourself and press forward, it may very well lead to something extraordinary in the end."
 
-    y "But how would anyone know?"
+    char "…"
 
-    n "People might not realise it yet at the time, but if you just believe in yourself and keep going, it can lead to something incredible in the end."
+    nar "You just have to believe in yourself. Even just a little is enough"
 
-    y "…"
-
-    n "You just have to believe in yourself. Even just a little is enough"
-
-    y "I think I understand"
+    char "I think I understand"
 
     menu:
-        Newton "I think I can do this, I’ll keep going, where should I sit to keep working?"
-        "Sit under the palm tree":
+        Newton "Aye, I shall see this through! The fire within me cannot be quelled. Where shall I take my seat and work further?"
+        "{font=VCRMono.ttf}Sit under a palm tree{/font}":
             scene bg black with dissolve
-            "Death by nut"
-            "Let's do it again."
+            nar "{shader=jitter}{size=*1.5}{b}DEATH BY NUT{/b}{/size}{/shader}"
+            nar "Shall we try again?"
             jump chapterNewton
-        "Sit under the apple tree":
-            "Newton sit under the Apple tree"
+        "{font=VCRMono.ttf}Sit under an apple tree{/font}":
+            nar "Newton sat under the Apple tree"
             scene bg appletree with dissolve:
                 zoom 1.85
             
     show newtonChill at right
-    n "Let us watch history happen."
+    nar "You know what happens from here. Let us witness history unfold."
     pause(1)
-    scene bg black with dissolve
-    "Newton sits under the apple tree and continues to work on his hypothesis."
-    "While he is working, an apple falls from the tree and hits him on the head."
-    "History has been made."
+    
+    nar  "Newton sits beneath the apple tree, lost in thought, his hypothesis still taking shape."
+    nar "As he ponders, an apple falls from the tree and strikes him upon the head."
+    show applefalls at right with dissolve
+    nar "And so, {b}history is made{/b}."
     pause(1)
-    "Let's head back to the present..."
+    nar "Now, let us return to the present…"
     scene bg black with dissolve
     stop music fadeout(1.0)
     jump chapterEnding

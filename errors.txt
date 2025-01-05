@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/chapterEnding.rpy", line 15: end of line expected.
-    show splashscreen3 with dissolve at right
-                                     ^
+The label chapterApe is defined twice, at File "game/chapterApe.rpyc", line 36:
 
-Ren'Py Version: Ren'Py 8.1.1.23060707
-Sun Aug  6 15:43:26 2023
+and File "game/chapterMonke.rpy", line 34:
+label chapterApe:
+
+
+The label sadMonkey is defined twice, at File "game/chapterApe.rpyc", line 153:
+
+and File "game/chapterMonke.rpy", line 143:
+    label sadMonkey:
+
+
+Ren'Py Version: Ren'Py 8.3.4.24120703
+Mon Jan  6 12:18:31 2025

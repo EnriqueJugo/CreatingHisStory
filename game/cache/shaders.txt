@@ -1,9 +1,15 @@
-renpy.ftl
 renpy.texture
-renpy.alpha renpy.texture
-renpy.geometry renpy.solid
 renpy.dissolve renpy.dissolve
-renpy.dissolve renpy.geometry
-renpy.alpha renpy.geometry renpy.texture
+renpy.alpha renpy.texture textshader.typewriter renpy.texture textshader.typewriter
 renpy.geometry renpy.texture
+renpy.alpha renpy.geometry renpy.texture
 renpy.solid
+renpy.geometry renpy.texture textshader.jitter textshader.typewriter
+renpy.geometry renpy.solid
+renpy.geometry renpy.texture textshader.typewriter
+renpy.ftl
+renpy.texture textshader.typewriter textshader.jitter renpy.texture textshader.typewriter textshader.jitter
+renpy.texture textshader.typewriter renpy.texture textshader.typewriter
+renpy.alpha renpy.texture
+renpy.alpha renpy.geometry renpy.texture textshader.typewriter
+renpy.dissolve renpy.geometry

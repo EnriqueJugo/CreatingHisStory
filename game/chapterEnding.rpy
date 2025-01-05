@@ -1,7 +1,12 @@
-#defining characters here
+# This file contains the script for the final chapter.
 
-define y = Character("You")
-define n = Character("Narrator", color = "#797777")
+define config.default_textshader = "typewriter"
+
+# ====================== initialize new characters ====================== #
+
+# NA
+
+# ====================== initialize character animations ====================== #
 
 image lachlanOff:
     "lachlan off.png"
@@ -18,38 +23,39 @@ image lachlanOff:
 image lachlanOn:
     "lachlan on.png"
 
-#scene begins here
+# ====================== scene ====================== #
+
 label chapterEnding:
     #Fades back into present
     play music "presentDayAudio.ogg" volume 0.5
-    n "So what did you think?"
+    nar "So what did you think?"
 
     scene bg bar with dissolve:
         zoom 1.85
     
-    show splashscreen3 trans at right with dissolve:
+    show lachlan sitting at right with dissolve:
         zoom 2.5
-    y "That was stupid."
+    char "That was stupid."
 
-    n "Huh?!"
+    nar "Huh?!"
 
-    y "I couldn’t change anything"
+    char "I couldn’t change anything"
 
-    n "…"
+    nar "…"
 
-    y "…  but that was the point. Wasn’t it?"
+    char "…  but that was the point. Wasn’t it?"
 
-    n "Yes."
+    nar "Yes."
 
-    n "There are things in the past that we wish we could change but ultimately we can’t…"
+    nar "There are things in the past that we wish we could change but ultimately we can’t…"
 
-    y "We can only bring the lessons from the past to alter our future"
+    char "We can only bring the lessons from the past to alter our future"
 
-    n "Exactly."
+    nar "Exactly."
 
     #this is the final quote change as necessary
 
-    scene bg black with dissolve:
+    scene bg black with dissolve
     stop music
     play audio "lachlanGod.ogg"
     show lachlanOff at truecenter with dissolve:
@@ -59,6 +65,6 @@ label chapterEnding:
     scene bg black with None
     show lachlanOn at truecenter:
         zoom 1.5
-    "'We cannot change what could have been, but we can change what can be'"
+    "{b}'We cannot change what could have been, but we can change what can be'{/b}"
 
     pause(2)
